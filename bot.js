@@ -10,9 +10,8 @@ var Twitter = new twit(config);
 var retweet = function() {
     var params = {
         q: 'varacast',  // REQUIRED
+        result_type: 'mixed',
 	count: 1    
-        //result_type: 'recent',
-        
     }
 
     Twitter.get('search/tweets', params, function(err, data, response) {
