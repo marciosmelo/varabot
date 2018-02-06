@@ -1,6 +1,6 @@
 // Dependencies =========================
-var twit = require('twit');
-var config = require('./config');
+var twit = require('twit'),
+    config = require('./config');
 
 var Twitter = new twit(config);
 
@@ -9,7 +9,7 @@ var Twitter = new twit(config);
 // find latest tweet according the query 'q' in params
 var retweet = function() {
     var params = {
-        q: 'varacast, #podcast',  // REQUIRED
+        q: '#podcast',  // REQUIRED
         result_type: 'recent',
         count: 1
     }
