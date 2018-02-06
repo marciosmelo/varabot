@@ -1,5 +1,5 @@
 # varabot :robot:
-Varabot - A Twitter Bot for @varacast :pig:
+Varabot - A Twitter Bot for @Varacast :pig:
 
 ## Uses
 
