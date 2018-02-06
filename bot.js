@@ -1,5 +1,5 @@
 // Dependencies =========================
-var twit = require('twit'),
+var twit = require('twit');
 var config = require('./config');
 
 var Twitter = new twit(config);
