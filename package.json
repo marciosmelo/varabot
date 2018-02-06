@@ -1,0 +1,31 @@
+{
+  "name": "varabot",
+  "version": "1.0.0",
+  "description": "A Twitter Bot for @varacast",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marciosmelo/varabot.git"
+  },
+  "keywords": [
+    "bot",
+    "twitter",
+    "node",
+    "nodejs",
+    "npm",
+    "varacast",
+    "podcast"
+  ],
+  "author": "@marciosmelo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marciosmelo/varabot/issues"
+  },
+  "homepage": "https://github.com/marciosmelo/varabot#readme",
+  "dependencies": {
+    "twit": "^2.2.9"
+  }
+}
