@@ -2,7 +2,7 @@
 var
     twit = require('twit'),
     config = require('./config');
-
+console.log(config);
 var Twitter = new twit(config);
 
 // RETWEET BOT ==========================
@@ -40,5 +40,5 @@ retweet();
 // retweet in every 50 minutes
 //setInterval(retweet, 3000000);
 
-//Se this => http://techknights.org/workshops/nodejs-twitterbot/
+
 
