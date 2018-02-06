@@ -9,7 +9,7 @@ var Twitter = new twit(config);
 // find latest tweet according the query 'q' in params
 var retweet = function() {
     var params = {
-        q: '#podcast',  // REQUIRED
+        q: 'varacast, thepocilga',  // REQUIRED
         result_type: 'recent',
         count: 1
     }
@@ -36,8 +36,8 @@ var retweet = function() {
 
 // grab & retweet as soon as program is running...
 retweet();
-// retweet in every 5 minutes
-setInterval(retweet, 300000);
+// retweet in every 50 minutes
+setInterval(retweet, 3000000);
 
 
 
