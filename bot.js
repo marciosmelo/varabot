@@ -9,9 +9,10 @@ var Twitter = new twit(config);
 // find latest tweet according the query 'q' in params
 var retweet = function() {
     var params = {
-        q: 'varacast, thepocilga',  // REQUIRED
-        result_type: 'recent',
-        count: 1
+        q: 'varacast',  // REQUIRED
+	count: 1    
+        //result_type: 'recent',
+        
     }
 
     Twitter.get('search/tweets', params, function(err, data, response) {
