@@ -1,8 +1,7 @@
 // Dependencies =========================
-var
-    twit = require('twit'),
-    config = require('./config');
-console.log(config);
+var twit = require('twit'),
+var config = require('./config');
+
 var Twitter = new twit(config);
 
 // RETWEET BOT ==========================
@@ -10,7 +9,7 @@ var Twitter = new twit(config);
 // find latest tweet according the query 'q' in params
 var retweet = function() {
     var params = {
-        q: 'varacast',  // REQUIRED
+        q: 'varacast, #podcast',  // REQUIRED
         result_type: 'recent',
         count: 1
     }
@@ -37,8 +36,8 @@ var retweet = function() {
 
 // grab & retweet as soon as program is running...
 retweet();
-// retweet in every 50 minutes
-//setInterval(retweet, 3000000);
+// retweet in every 5 minutes
+setInterval(retweet, 300000);
 
 
 
