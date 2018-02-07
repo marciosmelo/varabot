@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/marciosmelo/varabot#readme",
   "dependencies": {
+    "eslint": "^4.17.0",
     "twit": "^2.2.9"
   }
 }
