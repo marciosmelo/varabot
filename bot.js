@@ -24,7 +24,7 @@ var retweet = function() {
                     console.log('Retweeted!!!');
                 }
                  if (err) {
-                    console.log('Something went wrong while RETWEETING... Duplication maybe...');
+                    console.log('Something went wrong while RETWEETING: ' + err);
                 }
             });
   		}else{
@@ -50,7 +50,7 @@ var favoriteTweet = function(){
                     Twitter.post('favorites/create', {id: randomTweet.id_str}, function(err, response){
                         // if there was an error while 'favorite'
                         if(err){
-                            console.log('CANNOT BE FAVORITE... Error');
+                            console.log('CANNOT BE FAVORITE... Error: ' + err);
                         }
                         else{
                             console.log('FAVORITED... Success!!!');
