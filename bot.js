@@ -6,7 +6,8 @@ var Twitter = new twit(config);
 
 var params = {
     q: 'varacast',  // REQUIRED
-    result_type: 'recent'
+    result_type: 'mixed',
+    count: 20
 }
 
 // RETWEET BOT ==========================
