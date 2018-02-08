@@ -15,9 +15,9 @@ var params = {
 var retweet = function() {
     Twitter.get('search/tweets', params, function(err, data, response) {
   		if (!err) {
- 			var retweetId = data.statuses[0].id_str;
+ 			var retweet = randomTweet(data.statuses);
   			 Twitter.post('statuses/retweet/:id', {
-                 id: retweetId
+                 id: retweetId.id_str
              },function(err, response) {
                 if (response) {
                     console.log('Retweeted!!!');
@@ -67,7 +67,7 @@ var favoriteTweet = function(){
   // grab & 'favorite' as soon as program is running...
   favoriteTweet();
   // retweet in every 50 minutes
-  setInterval(retweet, 3000000);
+  setInterval(retweet, 3600000);
   // 'favorite' a tweet in every 60 minutes
   setInterval(favoriteTweet, 3600000);
   // function to generate a random tweet tweet
