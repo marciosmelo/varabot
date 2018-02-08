@@ -15,7 +15,7 @@ var params = {
 var retweet = function() {
     Twitter.get('search/tweets', params, function(err, data, response) {
   		if (!err) {
- 			var retweet = randomTweet(data.statuses);
+ 			var retweet = ranDom(data.statuses);
   			 Twitter.post('statuses/retweet/:id', {
                  id: retweetId.id_str
              },function(err, response) {
