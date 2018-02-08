@@ -17,7 +17,7 @@ var retweet = function() {
   		if (!err) {
  			var retweet = ranDom(data.statuses);
   			 Twitter.post('statuses/retweet/:id', {
-                 id: retweetId.id_str
+                 id: retweet.id_str
              },function(err, response) {
                 if (response) {
                     console.log('Retweeted!!!');
