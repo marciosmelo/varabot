@@ -2,7 +2,7 @@
 Varabot - A Twitter Bot for @Varacast :pig:
 
 - RT tweets with 'varacast'
-- Fave tweets with 'varacast'
+- :heart: tweets with 'varacast'
 
 ## Uses
 
