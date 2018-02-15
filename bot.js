@@ -63,7 +63,7 @@ var favoriteTweet = function(){
     });
   }
 
- Twitter.stream('statuses/filter', {track: 'podcast'}, function(stream) {
+ Twitter.stream('statuses/filter', {track: '#podcast'}, function(stream) {
     stream.on('data', function(tweet) {
 
     // print out the text of the tweet that came in
