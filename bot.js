@@ -63,32 +63,6 @@ var favoriteTweet = function(){
     });
   }
 
- Twitter.stream('statuses/filter', {track: '#podcast'}, function(stream) {
-    stream.on('data', function(tweet) {
-
-    // print out the text of the tweet that came in
-    console.log(tweet.text);
-
-    //build our reply object
-    var statusObj = {status: "Oinc oinc @" + tweet.user.screen_name }
-
-    //call the post function to tweet something
-    Twitter.post('statuses/update', statusObj,  function(error, tweetReply, response){
-
-      //if we get an error print it out
-      if(error){
-        console.log(error);
-      }
-
-      //print the text of the tweet we sent out
-      console.log(tweetReply.text);
-    });
-  });
-
-  stream.on('error', function(error) {
-    console.log(error);
-  });
-});
 
   // grab & retweet as soon as program is running...
   retweet();
