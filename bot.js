@@ -79,3 +79,4 @@ var favoriteTweet = function(){
   };
 
  // for more parametes, see: https://dev.twitter.com/rest/reference
+ // http://techknights.org/workshops/nodejs-twitterbot/
