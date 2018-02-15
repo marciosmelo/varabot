@@ -63,6 +63,16 @@ var favoriteTweet = function(){
     });
   }
 
+ Twitter.stream('statuses/filter', {track: '#podcast'}, function(stream) {
+  stream.on('data', function(tweet) {
+    console.log(tweet.text);
+  });
+
+  stream.on('error', function(error) {
+    console.log(error);
+  });
+});
+
   // grab & retweet as soon as program is running...
   retweet();
   // grab & 'favorite' as soon as program is running...
