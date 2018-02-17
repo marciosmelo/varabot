@@ -1,7 +1,7 @@
 var TwitterPackage = require('twitter');
 
 // importing my secret.json file
-var secret = require("./secret"); //using local
+//var secret = require("./secret"); //using local
 
 //make a new Twitter object
 //var Twitter = new TwitterPackage(secret);
