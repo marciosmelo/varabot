@@ -10,6 +10,11 @@ Varabot - A Twitter Bot for @Varacast :pig:
 - Nodejs
 - npm twit
 
+## Run :rocket:
+
+- npm install
+- npm start 
+
 ## Issues
 
 - Refactoring the interval method
