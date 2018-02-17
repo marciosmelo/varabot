@@ -1,12 +1,16 @@
 var TwitterPackage = require('twitter');
 
 // importing my secret.json file
-var secret = require("./config");
+var secret = require("./secret"); //using local
 
-
-console.log('teste');
 //make a new Twitter object
-var Twitter = new TwitterPackage(secret);
+//var Twitter = new TwitterPackage(secret);
+var Twitter = new TwitterPackage({
+    consumer_key: process.env.consumer_key,
+    consumer_secret: process.env.consumer_secret,
+    access_token: process.env.access_token,
+    access_token_secret: process.env.access_token_secret
+  })
 
 // we will randomly pick one of these items in this array
 var arrOfMagicSayings = [
@@ -25,7 +29,7 @@ var arrOfMagicSayings = [
     "Sim, claro.",
     "SOOOOOOOOOOBE WAR PIGS!!!.",
     "TARAAAN.... TAN TAN TAAAAAN TANRAAAANNNN!!!",
-    "Diga olá...",
+    "Diga oláaaaa...",
     "Pergunte-me outra vez, mais tarde.",
     "Minha resposta pode ser não.",
     "Será?",
@@ -45,7 +49,7 @@ Twitter.stream('statuses/filter', {track: 'varacast'}, function(stream) {
       var randomIndex = Math.round(Math.random() * arrOfMagicSayings.length);
   
       //build our reply string grabbing the string in that randomIndex we've calculated
-      var reply = "Hi @" + tweet.user.screen_name + ", " + arrOfMagicSayings[randomIndex];
+      var reply = "Olá @" + tweet.user.screen_name + ", " + arrOfMagicSayings[randomIndex];
   
       //call the post function to tweet something
       Twitter.post('statuses/update', {status: reply},  function(error, tweetReply, response){
