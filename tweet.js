@@ -1,7 +1,7 @@
 var TwitterPackage = require('twitter');
 
 // importing my secret.json file
-//var secret = require("./secret"); //using local
+var secret = require("./secret"); //using local
 
 //make a new Twitter object
 //var Twitter = new TwitterPackage(secret);
@@ -25,7 +25,7 @@ var arrOfMagicSayings = [
     "Sei não.",
     "Gelo fino, gelo fino....",
     "Porco-aranha, porco-aranha.....",
-    "Dúvido bastante.",
+    "Duvido bastante.",
     "Sim, claro.",
     "SOOOOOOOOOOBE WAR PIGS!!!.",
     "TARAAAN.... TAN TAN TAAAAAN TANRAAAANNNN!!!",

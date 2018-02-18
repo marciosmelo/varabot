@@ -40,24 +40,21 @@ var stream = Twitter.stream('statuses/filter', {track: 'varacast'});
 stream.on('tweet', function(tweet){
     console.log(tweet.text);
   
-    // calculate the random index (Math.random returns a double between 0 and 1)
-    var randomIndex = Math.round(Math.random() * arrResponses.length);
-
-    //build our reply string grabbing the string in that randomIndex we've calculated
-    var reply = "Olá @" + tweet.user.screen_name + ", " + arrResponses[randomIndex];
-
-    //call the post function to tweet something
-    Twitter.post('statuses/update', {status: reply},  function(error, tweetReply, response){
-  
-        //if we get an error print it out
-        if(error){
-          console.log(error);
-        }
-  
-        //print the text of the tweet we sent out
-        console.log(tweetReply.text);
-      });
-
+    var username = tweet.user.screen_name;
+    if (username != 'varacast') {
+        var reply = "Olá @" + username + ", " + ranDom(arrResponses);
+        //call the post function to tweet something
+        Twitter.post('statuses/update', {status: reply},  function(error, tweetReply, response){
+    
+            //if we get an error print it out
+            if(error){
+            console.log(error);
+            }
+    
+            //print the text of the tweet we sent out
+            console.log(tweetReply.text);
+        });
+    }
 });
 
 stream.on('error', function(error) {
