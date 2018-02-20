@@ -89,7 +89,7 @@ var retweet = () => {
 // FAVORITE BOT====================
 
 // find a random tweet and 'favorite' it
-var favoriteTweet = function(){
+var favoriteTweet = () => {
     // find the tweet
     Twitter.get('search/tweets', params, function(err,data,response){
         if (!err) {
