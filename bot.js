@@ -65,7 +65,7 @@ stream.on('error', function(error) {
 // RETWEET BOT ==========================
 
 // find latest tweet according the query 'q' in params
-var retweet = function() {
+var retweet = () => {
     Twitter.get('search/tweets', params, function(err, data, response) {
   		if (!err) {
  			var retweet = ranDom(data.statuses);
