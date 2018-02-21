@@ -17,7 +17,7 @@ Varabot - A Twitter Bot for @Varacast :pig:
 
 ## Issues
 
-- Refactoring the interval method
-- Create random messages to tweet
+- Refactoring the RT and Fave Methods
 - Send messagens for who follow @varacast
+
 
