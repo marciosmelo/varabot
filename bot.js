@@ -26,7 +26,7 @@ var arrResponses = [
     "Dúvido bastante.",
     "Sim, claro.",
     "SOOOOOOOOOOBE WAR PIGS!!!.",
-    "TARAAAN.... TAN TAN TAAAAAN TANRAAAANNNN!!!",
+    "TANRAAAN.... TAN TAN TAAAAAN TANRAAAANNNN!!!",
     "Diga oláaaaa...",
     "Pergunte-me outra vez, mais tarde.",
     "Minha resposta pode ser não.",
@@ -116,19 +116,29 @@ var favoriteTweet = () => {
   }
 
 
-  // grab & retweet as soon as program is running...
   retweet();
-  // grab & 'favorite' as soon as program is running...
   favoriteTweet();
-  // retweet in every 50 minutes
+  //Every 60 min RT | 30 min Fave
   setInterval(retweet, 3600000);
-  // 'favorite' a tweet in every 30 minutes
   setInterval(favoriteTweet, 1800000);
+
   // function to generate a random tweet tweet
   function ranDom (arr) {
     var index = Math.floor(Math.random()*arr.length);
     return arr[index];
   };
+
+  function getTweetFromSearch(searchParams){
+    Twitter.get('search/tweets', searchParams, function(err, data, response) {
+        if (!err) {
+           return ranDom(data.statuses);         
+        }else{
+            console.log(err, "Error at search/tweets function");
+            return null;
+        }
+  });
+
+  }
 
  // for more parametes, see: https://dev.twitter.com/rest/reference
 
