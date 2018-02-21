@@ -42,7 +42,7 @@ stream.on('tweet', function(tweet){
   
     var username = tweet.user.screen_name;
     if (username != 'varacast') {
-        var reply = "Olá @" + username + ", " + ranDom(arrResponses);
+        var reply = "Olá @" + username + ", " + ranDomItemFromArray(arrResponses);
         //call the post function to tweet something
         Twitter.post('statuses/update', {status: reply},  function(error, tweetReply, response){
     
@@ -66,24 +66,19 @@ stream.on('error', function(error) {
 
 // find latest tweet according the query 'q' in params
 var retweet = () => {
-    Twitter.get('search/tweets', params, function(err, data, response) {
-  		if (!err) {
- 			var retweet = ranDom(data.statuses);
-  			 Twitter.post('statuses/retweet/:id', {
-                 id: retweet.id_str
-             },function(err, response) {
-                if (response) {
-                    console.log('Retweeted!!!');
-                }
-                 if (err) {
-                    console.log('Something went wrong while RETWEETING: ' + err);
-                }
-            });
-  		}else{
-  			console.log(err, "Error at search/tweets function");
-  		}
-	});
-   
+    var retweet = getTweetFromSearch(params);
+    if (null !== retweet){
+        Twitter.post('statuses/retweet/:id', {
+            id: retweet.id_str
+        },function(err, response) {
+            if (response) {
+                console.log('Retweeted!!!');
+            }
+            if (err) {
+                console.log('Something went wrong while RETWEETING: ' + err);
+            }
+        });
+    }
 }
 
 // FAVORITE BOT====================
@@ -95,7 +90,7 @@ var favoriteTweet = () => {
         if (!err) {
         // find tweets
             var tweet = data.statuses;
-            var randomTweet = ranDom(tweet);   // pick a random tweet
+            var randomTweet = ranDomItemFromArray(tweet);   // pick a random tweet
                 // if random tweet exists
                 if(typeof randomTweet != 'undefined'){
                     // Tell TWITTER to 'favorite'
@@ -115,15 +110,14 @@ var favoriteTweet = () => {
     });
   }
 
-
+  //Run as soon as the app starts
   retweet();
   favoriteTweet();
   //Every 60 min RT | 30 min Fave
   setInterval(retweet, 3600000);
   setInterval(favoriteTweet, 1800000);
 
-  // function to generate a random tweet tweet
-  function ranDom (arr) {
+  function ranDomItemFromArray (arr) {
     var index = Math.floor(Math.random()*arr.length);
     return arr[index];
   };
@@ -131,7 +125,7 @@ var favoriteTweet = () => {
   function getTweetFromSearch(searchParams){
     Twitter.get('search/tweets', searchParams, function(err, data, response) {
         if (!err) {
-           return ranDom(data.statuses);         
+           return ranDomItemFromArray(data.statuses);         
         }else{
             console.log(err, "Error at search/tweets function");
             return null;
