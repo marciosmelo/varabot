@@ -29,6 +29,7 @@
   "dependencies": {
     "eslint": "^4.17.0",
     "jshint": "^2.9.5",
+    "nodemon": "^1.15.1",
     "twit": "^2.2.9",
     "twitter": "^1.7.1"
   }
