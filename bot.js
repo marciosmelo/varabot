@@ -6,8 +6,8 @@ var Twitter = new twit(config);
 
 var params = {
     q: 'varacast',  // REQUIRED
-    result_type: 'mixed',
-    count: 20
+    result_type: 'recent',
+    count: 10
 }
 
 // we will randomly pick one of these items in this array
