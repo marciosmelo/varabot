@@ -1,4 +1,3 @@
-// Dependencies =========================
 var twit = require('twit'),
     config = require('./config');
 
@@ -10,7 +9,6 @@ var params = {
     count: 10
 }
 
-// we will randomly pick one of these items in this array
 var arrResponses = [
     "Calma porcouvinte, Vara é apenas o coletivo de porcos.",
     "Oinc, oinc!",
@@ -46,25 +44,20 @@ stream.on('tweet', function(tweet){
         //call the post function to tweet something
         Twitter.post('statuses/update', {status: reply},  function(error, tweetReply, response){
     
-            //if we get an error print it out
-            if(error){
-            console.log(error);
-            }
-    
-            //print the text of the tweet we sent out
-            console.log(tweetReply.text);
+	    if(error){
+            	console.log(error);
+            }else{    
+   	        console.log(tweetReply.text);
+	    }
         });
     }
 });
 
 stream.on('error', function(error) {
-    //print out the error
     console.log(error);
 });
 
 // RETWEET BOT ==========================
-
-// find latest tweet according the query 'q' in params
 var retweet = () => {
     Twitter.get('search/tweets', params, function(err, data, response) {
   		if (!err) {
@@ -87,8 +80,6 @@ var retweet = () => {
 }
 
 // FAVORITE BOT====================
-
-// find a random tweet and 'favorite' it
 var favoriteTweet = () => {
     // find the tweet
     Twitter.get('search/tweets', params, function(err,data,response){
@@ -98,9 +89,7 @@ var favoriteTweet = () => {
             var randomTweet = ranDom(tweet);   // pick a random tweet
                 // if random tweet exists
                 if(typeof randomTweet != 'undefined'){
-                    // Tell TWITTER to 'favorite'
                     Twitter.post('favorites/create', {id: randomTweet.id_str}, function(err, response){
-                        // if there was an error while 'favorite'
                         if(err){
                             console.log('CANNOT BE FAVORITE... Error: ' + err);
                         }
@@ -115,20 +104,18 @@ var favoriteTweet = () => {
     });
   }
 
-
-  // grab & retweet as soon as program is running...
-  retweet();
-  // grab & 'favorite' as soon as program is running...
-  favoriteTweet();
-  // retweet in every 60 minutes
-  setInterval(retweet, 3600000);
-  // 'favorite' a tweet in every 30 minutes
-  setInterval(favoriteTweet, 1800000);
-  // function to generate a random tweet tweet
   function ranDom (arr) {
     var index = Math.floor(Math.random()*arr.length);
     return arr[index];
   };
 
+  // grab and 'RT' and 'favorite' as soon as program is running...
+  retweet();
+  favoriteTweet();
+  //Call the RT and Fave after intervals (miliseconds)
+  setInterval(retweet, 3600000);
+  setInterval(favoriteTweet, 1800000);
+  
+ 
  // for more parametes, see: https://dev.twitter.com/rest/reference
 
