@@ -105,7 +105,7 @@ var favoriteTweet = () => {
   }
 
  var followers = (userName) => {
- 	Twitter.get('users/suggestions/:slug', { slug: 'varacast' }, function (err, data, response) {
+ 	Twitter.get('users/suggestions/:slug', { slug: 'funny' }, function (err, data, response) {
   		console.log(data)
 	 });
  }
