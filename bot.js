@@ -4,7 +4,7 @@ var twit = require('twit'),
 var Twitter = new twit(config);
 
 var params = {
-    q: 'varacast',  // REQUIRED
+    q: 'varacast',  
     result_type: 'recent',
     count: 10
 }
@@ -30,7 +30,7 @@ var arrResponses = [
     "Minha resposta pode ser não.",
     "Será?",
     "Não conte com isto."
-  ]
+]
 
 //The @Varacast timeline
 var stream = Twitter.stream('statuses/filter', {track: 'varacast'}); 
@@ -44,11 +44,11 @@ stream.on('tweet', function(tweet){
         //call the post function to tweet something
         Twitter.post('statuses/update', {status: reply},  function(error, tweetReply, response){
     
-	    if(error){
-            	console.log(error);
+            if(error){
+                console.log(error);
             }else{    
-   	        console.log(tweetReply.text);
-	    }
+                console.log(tweetReply.text);
+            }
         });
     }
 });
@@ -60,62 +60,61 @@ stream.on('error', function(error) {
 // RETWEET BOT ==========================
 var retweet = () => {
     Twitter.get('search/tweets', params, function(err, data, response) {
-  		if (!err) {
- 			var retweet = ranDom(data.statuses);
-  			 Twitter.post('statuses/retweet/:id', {
-                 id: retweet.id_str
-             },function(err, response) {
+        if (!err) {
+            var retweet = ranDom(data.statuses);
+            Twitter.post('statuses/retweet/:id', {
+                id: retweet.id_str
+            },function(err, response) {
                 if (response) {
                     console.log('Retweeted!!!');
                 }
-                 if (err) {
+                if (err) {
                     console.log('Something went wrong while RETWEETING: ' + err);
                 }
             });
-  		}else{
-  			console.log(err, "Error at search/tweets function");
-  		}
-	});
+        }else{
+            console.log(err, "Error at search/tweets function");
+        }
+    });
    
 }
 
-// FAVORITE BOT====================
 var favoriteTweet = () => {
     // find the tweet
     Twitter.get('search/tweets', params, function(err,data,response){
         if (!err) {
-        // find tweets
+            // find tweets
             var tweet = data.statuses;
             var randomTweet = ranDom(tweet);   // pick a random tweet
-                // if random tweet exists
-                if(typeof randomTweet != 'undefined'){
-                    Twitter.post('favorites/create', {id: randomTweet.id_str}, function(err, response){
-                        if(err){
-                            console.log('CANNOT BE FAVORITE... Error: ' + err);
-                        }
-                        else{
-                            console.log('FAVORITED... Success!!!');
-                        }
-                    });
-                }else{
-                    console.log(err, "Error at favorites/tweets function");
-                }
-       }
+            // if random tweet exists
+            if(typeof randomTweet != 'undefined'){
+                faveTweet(randomTweet);
+            }else{
+                console.log(err, "Error at favorites/tweets function");
+            }
+        }
     });
-  }
+}
  
-  Twitter.get('users/suggestions/:slug', { slug: 'funny' }, function (err, data, response) {
-  	console.log(data)
-  });
+function faveTweet(tweet){
+    Twitter.post('favorites/create', {id: tweet.id_str}, function(err, response){
+        if(err){
+            console.log('Tweet doesnt favorited, error: ' + err);
+        }
+        else{
+            console.log('Tweet favorited!!');
+        }
+    });
+}
 
-  function ranDom (arr) {
+function ranDom (arr) {
     var index = Math.floor(Math.random()*arr.length);
     return arr[index];
-  };
+};
 
-  // grab and 'RT' and 'favorite' as soon as program is running...
-  retweet();
-  favoriteTweet();
-  //Call the RT and Fave after intervals (miliseconds)
-  setInterval(retweet, 1800000);
-  setInterval(favoriteTweet, 900000);
+// grab and 'RT' and 'favorite' as soon as program is running...
+//retweet();
+favoriteTweet();
+//Call the RT and Fave after intervals (miliseconds)
+//setInterval(retweet, 1800000);
+//setInterval(favoriteTweet, 900000);
