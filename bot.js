@@ -57,38 +57,25 @@ stream.on('error', function(error) {
     console.log(error);
 });
 
-// RETWEET BOT ==========================
-var retweet = () => {
-    Twitter.get('search/tweets', params, function(err, data, response) {
-        if (!err) {
-            var retweet = ranDom(data.statuses);
-            Twitter.post('statuses/retweet/:id', {
-                id: retweet.id_str
-            },function(err, response) {
-                if (response) {
-                    console.log('Retweeted!!!');
-                }
-                if (err) {
-                    console.log('Something went wrong while RETWEETING: ' + err);
-                }
-            });
-        }else{
-            console.log(err, "Error at search/tweets function");
-        }
-    });
-   
-}
 
-var favoriteTweet = () => {
+
+// BOT Search for Fave and RT
+var tweetBot = () => {
     // find the tweet
     Twitter.get('search/tweets', params, function(err,data,response){
         if (!err) {
             // find tweets
             var tweet = data.statuses;
             var randomTweet = ranDom(tweet);   // pick a random tweet
-            // if random tweet exists
+            console.log('Randon Tweet -> ' + randomTweet);
             if(typeof randomTweet != 'undefined'){
-                faveTweet(randomTweet);
+                try {
+                    faveTweet(randomTweet);
+                    retweet(randomTweet);
+                }catch(ex){
+                    console.log(ex);
+                }
+                
             }else{
                 console.log(err, "Error at favorites/tweets function");
             }
@@ -99,7 +86,7 @@ var favoriteTweet = () => {
 function faveTweet(tweet){
     Twitter.post('favorites/create', {id: tweet.id_str}, function(err, response){
         if(err){
-            console.log('Tweet doesnt favorited, error: ' + err);
+            console.log('Tweet doesnt favorited: ' + err);
         }
         else{
             console.log('Tweet favorited!!');
@@ -107,14 +94,26 @@ function faveTweet(tweet){
     });
 }
 
+function retweet(tweet){
+    Twitter.post('statuses/retweet/:id', {
+        id: tweet.id_str
+    },function(err, response) {
+        if (response) {
+            console.log('Retweeted!!!');
+        }
+        if (err) {
+            console.log('Something went wrong while RETWEETING: ' + err);
+        }
+    });
+
+}
 function ranDom (arr) {
     var index = Math.floor(Math.random()*arr.length);
     return arr[index];
 };
 
 // grab and 'RT' and 'favorite' as soon as program is running...
-//retweet();
-favoriteTweet();
+tweetBot();
 //Call the RT and Fave after intervals (miliseconds)
-//setInterval(retweet, 1800000);
-//setInterval(favoriteTweet, 900000);
+setInterval(tweetBot, 1800000);
+
