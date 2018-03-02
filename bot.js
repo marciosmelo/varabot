@@ -40,7 +40,7 @@ stream.on('tweet', function(tweet){
   
     var username = tweet.user.screen_name;
     if (username != 'varacast') {
-        var reply = "Olá @" + username + ". " + ranDom(arrResponses);
+        var reply = "Olá @" + username + "... " + ranDom(arrResponses);
         //call the post function to tweet something
         Twitter.post('statuses/update', {status: reply},  function(error, tweetReply, response){
     
