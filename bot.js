@@ -67,7 +67,7 @@ var tweetBot = () => {
             // find tweets
             var tweet = data.statuses;
             var randomTweet = ranDom(tweet);   // pick a random tweet
-            console.log('Randon Tweet -> ' + randomTweet);
+            console.log('Randon Tweet username -> ' + randomTweet.user.screen_name);
             if(typeof randomTweet != 'undefined'){
                 try {
                     faveTweet(randomTweet);
@@ -98,11 +98,10 @@ function retweet(tweet){
     Twitter.post('statuses/retweet/:id', {
         id: tweet.id_str
     },function(err, response) {
-        if (response) {
-            console.log('Retweeted!!!');
-        }
         if (err) {
             console.log('Something went wrong while RETWEETING: ' + err);
+        }else{
+            console.log('Retweeted!!!' + response);
         }
     });
 
