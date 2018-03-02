@@ -110,6 +110,7 @@ function retweet(tweet){
 
 function replyTweetWithRandonAnswer(tweet){
     var username = tweet.user.screen_name;
+    console.log('username: ' + username);
     if (username != 'varacast') {
         var reply = "Olá @" + username + ", " + ranDom(arrResponses);
         Twitter.post('statuses/update', {status: reply},  function(error, tweetReply, response){
