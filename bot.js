@@ -111,7 +111,7 @@ var favoriteTweet = () => {
 		}else{
   			console.log(data);
 			 var reply = ranDom(arrResponses);
-			 var userToReply = ranDom(data.ids).
+			 var userToReply = ranDom(data.ids);
 			 console.log(userToReply);
 			//call the post function to tweet something
 			Twitter.post('statuses/update', {status: reply, in_reply_to_status_id: userToReply},  
