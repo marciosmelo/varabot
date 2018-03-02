@@ -105,38 +105,23 @@ var favoriteTweet = () => {
   }
 
  var followers = (userName) => {
- 	Twitter.get('followers/ids', { screen_name: userName },  function (err, data, response) {
-		if (err){
-			console.log('Error Function Followers => ' + err);
-		}else{
-  			console.log(data);
-			 var reply = ranDom(arrResponses);
-			 var userToReply = ranDom(data.ids);
-			 console.log(userToReply);
-			//call the post function to tweet something
-			Twitter.post('statuses/update', {status: reply, in_reply_to_status_id: userToReply},  
-				     function(error, tweetReply, response){
-					    if(error){
-						console.log(error);
-					    }else{    
-						console.log(tweetReply.text);
-					    }
-			});
-		}
-  	});
+ 	Twitter.get('users/suggestions/:slug', { slug: 'varacast' }, function (err, data, response) {
+  		console.log(data)
+	 });
  }
+ 
   function ranDom (arr) {
     var index = Math.floor(Math.random()*arr.length);
     return arr[index];
   };
 
-  //followers('varacast');
+  followers('varacast');
   // grab and 'RT' and 'favorite' as soon as program is running...
-  retweet();
-  favoriteTweet();
+  //retweet();
+  //favoriteTweet();
   //Call the RT and Fave after intervals (miliseconds)
-  setInterval(retweet, 1800000);
-  setInterval(favoriteTweet, 900000);
+  //setInterval(retweet, 1800000);
+  //setInterval(favoriteTweet, 900000);
   
  
  // for more parametes, see: https://dev.twitter.com/rest/reference
