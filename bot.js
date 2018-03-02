@@ -109,7 +109,19 @@ var favoriteTweet = () => {
 		if (err){
 			console.log('Error Function Followers => ' + err);
 		}else{
-  			console.log(data)
+  			console.log(data);
+			 var reply = ranDom(arrResponses);
+			 var userToReply = ranDom(data.ids).
+			 console.log(userToReply);
+			//call the post function to tweet something
+			Twitter.post('statuses/update', {status: reply, in_reply_to_status_id: userToReply},  
+				     function(error, tweetReply, response){
+					    if(error){
+						console.log(error);
+					    }else{    
+						console.log(tweetReply.text);
+					    }
+			});
 		}
   	});
  }
