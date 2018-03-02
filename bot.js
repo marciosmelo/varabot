@@ -65,13 +65,14 @@ var tweetBot = () => {
     Twitter.get('search/tweets', params, function(err,data,response){
         if (!err) {
             // find tweets
-            var tweet = data.statuses;
-            var randomTweet = ranDom(tweet);   // pick a random tweet
-            console.log('Randon Tweet username -> ' + randomTweet.user.screen_name);
+            var tweets = data.statuses;
+            var randomTweet = ranDom(tweets);   
+            
             if(typeof randomTweet != 'undefined'){
                 try {
                     faveTweet(randomTweet);
                     retweet(randomTweet);
+                    replyTweetWithRandonAnswer(randomTweet);
                 }catch(ex){
                     console.log(ex);
                 }
@@ -98,14 +99,29 @@ function retweet(tweet){
     Twitter.post('statuses/retweet/:id', {
         id: tweet.id_str
     },function(err, response) {
+        if (response) {
+            console.log('Retweeted!!!');
+        }
         if (err) {
             console.log('Something went wrong while RETWEETING: ' + err);
-        }else{
-            console.log('Retweeted!!!' + response);
         }
     });
-
 }
+
+function replyTweetWithRandonAnswer(tweet){
+    var username = tweet.user.screen_name;
+    if (username != 'varacast') {
+        var reply = "Olá @" + username + ", " + ranDom(arrResponses);
+        Twitter.post('statuses/update', {status: reply},  function(error, tweetReply, response){
+            if(error){
+                console.log(error);
+            }else{    
+                console.log(tweetReply.text);
+            }
+        });
+    }
+}
+
 function ranDom (arr) {
     var index = Math.floor(Math.random()*arr.length);
     return arr[index];
