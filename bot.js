@@ -6,7 +6,7 @@ var Twitter = new twit(config);
 var params = {
     q: 'varacast',  
     result_type: 'recent',
-    count: 10
+    count: 20
 }
 
 var arrResponses = [
@@ -130,6 +130,6 @@ function ranDom (arr) {
 
 // grab and 'RT' and 'favorite' as soon as program is running...
 tweetBot();
-//Call the RT and Fave after intervals (miliseconds)
-setInterval(tweetBot, 1800000);
+//Call the RT and Fave after intervals (1 hora)
+setInterval(tweetBot, 3600000);
 
