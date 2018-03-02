@@ -103,26 +103,19 @@ var favoriteTweet = () => {
        }
     });
   }
-
- var followers = (userName) => {
- 	Twitter.get('users/suggestions/:slug', { slug: 'funny' }, function (err, data, response) {
-  		console.log(data)
-	 });
- }
  
+  Twitter.get('users/suggestions/:slug', { slug: 'funny' }, function (err, data, response) {
+  	console.log(data)
+  });
+
   function ranDom (arr) {
     var index = Math.floor(Math.random()*arr.length);
     return arr[index];
   };
 
-  followers('varacast');
   // grab and 'RT' and 'favorite' as soon as program is running...
-  //retweet();
-  //favoriteTweet();
+  retweet();
+  favoriteTweet();
   //Call the RT and Fave after intervals (miliseconds)
-  //setInterval(retweet, 1800000);
-  //setInterval(favoriteTweet, 900000);
-  
- 
- // for more parametes, see: https://dev.twitter.com/rest/reference
-
+  setInterval(retweet, 1800000);
+  setInterval(favoriteTweet, 900000);
