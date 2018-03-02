@@ -113,8 +113,8 @@ var favoriteTweet = () => {
   retweet();
   favoriteTweet();
   //Call the RT and Fave after intervals (miliseconds)
-  setInterval(retweet, 3600000);
-  setInterval(favoriteTweet, 1800000);
+  setInterval(retweet, 1800000);
+  setInterval(favoriteTweet, 900000);
   
  
  // for more parametes, see: https://dev.twitter.com/rest/reference
