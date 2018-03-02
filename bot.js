@@ -21,7 +21,7 @@ var arrResponses = [
     "Sei não.",
     "Gelo fino, gelo fino....",
     "Porco-aranha, porco-aranha.....",
-    "Dúvido bastante.",
+    "Duvido bastante.",
     "Sim, claro.",
     "SOOOOOOOOOOBE WAR PIGS!!!.",
     "TANRAAAN.... TAN TAN TAAAAAN TANRAAAANNNN!!!",
