@@ -130,7 +130,7 @@ var favoriteTweet = () => {
     return arr[index];
   };
 
-  followers('varacast');
+  //followers('varacast');
   // grab and 'RT' and 'favorite' as soon as program is running...
   retweet();
   favoriteTweet();
