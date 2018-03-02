@@ -104,11 +104,21 @@ var favoriteTweet = () => {
     });
   }
 
+ var followers = (userName) => {
+ 	Twitter.get('followers/ids', { screen_name: userName },  function (err, data, response) {
+		if (err){
+			console.log('Error Function Followers => ' + err);
+		}else{
+  			console.log(data)
+		}
+  	});
+ }
   function ranDom (arr) {
     var index = Math.floor(Math.random()*arr.length);
     return arr[index];
   };
 
+  followers('varacast');
   // grab and 'RT' and 'favorite' as soon as program is running...
   retweet();
   favoriteTweet();
