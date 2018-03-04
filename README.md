@@ -16,8 +16,7 @@ Varabot - A Twitter Bot for @Varacast :pig:
 - npm start 
 
 ## Issues
+Send sugestions for the varabot
 
-- Refactoring the RT and Fave Methods
-- Send messagens for who follow @varacast
 
 
