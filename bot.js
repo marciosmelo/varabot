@@ -72,7 +72,7 @@ var tweetBot = () => {
                 try {
                     faveTweet(randomTweet);
                     retweet(randomTweet);
-                    //replyTweetWithRandonAnswer(randomTweet);
+                    replyTweetWithRandonAnswer(randomTweet);
                 }catch(ex){
                     console.log(ex);
                 }
