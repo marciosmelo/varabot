@@ -16,7 +16,7 @@ Varabot - A Twitter Bot for @Varacast :pig:
 - npm start 
 
 ## Issues
-Send sugestions for the varabot
 
+- Send random 'shit' messages for the POCILGA crew
 
 
