@@ -129,7 +129,7 @@ function ranDom (arr) {
 };
 
 // grab and 'RT' and 'favorite' as soon as program is running...
-tweetBot();
+//tweetBot();
 //Call the RT and Fave after intervals (1 hora)
-setInterval(tweetBot, 3600000);
+//setInterval(tweetBot, 3600000);
 
