@@ -68,7 +68,7 @@ var tweetBot = () => {
             var tweets = data.statuses;
             var randomTweet = ranDom(tweets);   
             
-            if(typeof randomTweet != 'undefined'){
+            if(typeof randomTweet != 'undefined' && randomTweet.user.screen_name != 'varacast'){
                 try {
                     faveTweet(randomTweet);
                     retweet(randomTweet);
@@ -128,8 +128,8 @@ function ranDom (arr) {
     return arr[index];
 };
 
-// grab and 'RT' and 'favorite' as soon as program is running...
-//tweetBot();
+//grab and 'RT' and 'favorite' as soon as program is running...
+tweetBot();
 //Call the RT and Fave after intervals (1 hora)
-//setInterval(tweetBot, 3600000);
+setInterval(tweetBot, 3600000);
 
