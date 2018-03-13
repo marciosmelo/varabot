@@ -103,11 +103,10 @@ function retweet(tweet){
     Twitter.post('statuses/retweet/:id', {
         id: tweet.id_str
     },function(err, response) {
-        if (response) {
-            console.log('Retweeted!!!');
-        }
-        if (err) {
-            console.log('Something went wrong while RETWEETING: ' + err);
+        if (!err) {
+           console.log('Retweeted!!!');
+        }else{
+           console.log('Something went wrong while RETWEETING: ' + err);
         }
     });
 }
