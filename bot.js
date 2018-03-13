@@ -70,7 +70,7 @@ var tweetBot = () => {
             
             if(typeof randomTweet != 'undefined' ){
                 var user = randomTweet.user.screen_name;
-                console.log('user -> ' + user;
+                console.log('user -> ' + user);
                 try {
                     faveTweet(randomTweet);
                     retweet(randomTweet);
