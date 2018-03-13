@@ -67,14 +67,16 @@ var tweetBot = () => {
             // find tweets
             var tweets = data.statuses;
             var randomTweet = ranDom(tweets);   
-            
+            var user;
             if(typeof randomTweet != 'undefined' ){
-                var user = randomTweet.user.screen_name;
+                user = randomTweet.user.screen_name;
                 console.log('user -> ' + user);
                 try {
-                    faveTweet(randomTweet);
-                    retweet(randomTweet);
-                    //replyTweetWithRandonAnswer(randomTweet);
+                    if (user != 'varacast'){
+                        faveTweet(randomTweet);
+                        retweet(randomTweet);
+                        //replyTweetWithRandonAnswer(randomTweet);
+                    }
                 }catch(ex){
                     console.log(ex);
                 }
