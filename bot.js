@@ -65,5 +65,5 @@ function ranDom(arr) {
 };
 
 tweetBot();
-setInterval(tweetBot, 3600000);
+setInterval(tweetBot, 180000);
 
